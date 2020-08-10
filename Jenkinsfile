@@ -1,10 +1,15 @@
 pipeline {
-stage('Setting the variables values') {
-    steps {
-         sh '''
-            #!/bin/bash
-            echo "hello world"
-         '''
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            }
+        }
     }
   post {
     always {
